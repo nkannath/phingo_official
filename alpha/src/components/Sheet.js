@@ -1,27 +1,24 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 
-class Sheet extends Component {
+const DIMENSION = 4;
+class Sheet extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            songs: [
-                {id: 1, name: 'Foam'},
-                {id: 2, name: 'Taste'},
-                {id: 3, name: 'Meat'},
-                {id: 4, name: '2001'}
+            pick: new Array(DIMENSION*DIMENSION).fill(0),
+            picked: [],
+            result: [],
+            nxtNum: 1,
+            hits: null,
+            hit_pool: this.generateNums(dimension * dimension),
+            hit_step: 0,
+            dimension: dimension
+        };
 
-            ]
-        }
+        this.handleClick = this.handleClick.bind(this);
+        this.handleClear = this.handleClear.bind(this);
     }
-}
-
-render() {
-    return (
-        <div>
-            <h1>Phingo Dynamic Table</h1>
-        </div>
-    )
 }
 
 export default Sheet;
